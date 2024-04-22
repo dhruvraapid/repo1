@@ -13,15 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo1
-        uses: actions/checkout@v2
-
-      - name: Push to repo2
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          repository: dhruvraapid/repo2
+      - run: echo "Hello World"
 
 
 
