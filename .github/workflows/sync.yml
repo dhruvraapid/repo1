@@ -18,7 +18,6 @@ jobs:
         run: echo "::set-output name=changes::$(git diff --name-only HEAD^ HEAD)"
 
       - name: Push changed files to repo2
-        if: steps.git-diff.outputs.changes != ''
         run: |
           git remote add repo2 https://github.com/dhruvraapid/repo2.git
           git add .
