@@ -19,6 +19,8 @@ jobs:
 
       - name: Push changed files to repo2
         run: |
+          git config --global user.email "dhruv@raapid.ai"
+          git config --global user.name "Dhruv Patel"
           git remote add repo2 https://github.com/dhruvraapid/repo2.git
           git add .
           git commit -m "Sync changes from repo1"
