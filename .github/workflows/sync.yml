@@ -18,10 +18,14 @@ jobs:
         run: echo "::set-output name=changes::$(git diff --name-only HEAD^ HEAD)"
 
       - name: Push changed files to repo2
+        if: steps.git-diff.outputs.changes != ''
+        uses: actions/checkout@v2
+        with:
+          repository: dhruvraapid/repo2
+          token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "dhruv@raapid.ai"
           git config --global user.name "Dhruv Patel"
-          git remote add repo2 https://github.com/dhruvraapid/repo2.git
           git add .
           git commit -m "Sync changes from repo1"
-          git push repo2 main
+          git push origin main
