@@ -16,6 +16,6 @@ jobs:
       - name: Push to repo2
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN }}
           branch: main
           repository: dhruvraapid/repo2  # Replace with the appropriate repository name
