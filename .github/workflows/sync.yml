@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+
+name: Sync Commits
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo1
+        uses: actions/checkout@v2
+
+      - name: Push to repo2
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          repository: repo2  # Replace <username>/<repo2> with the appropriate repository name
+
+
+
