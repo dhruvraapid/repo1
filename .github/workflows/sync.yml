@@ -1,6 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
-
 name: Sync Commits
 
 on:
@@ -13,7 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Hello World"
+      - name: Checkout repo1
+        uses: actions/checkout@v2
 
+      - name: Check for changes
+        id: git-diff
+        run: echo "::set-output name=changes::$(git diff --name-only HEAD^ HEAD)"
 
-
+      - name: Push changed files to repo2
+        if: steps.git-diff.outputs.changes != ''
+        run: |
+          git remote add repo2 https://github.com/dhruvraapid/repo2.git
+          git add .
+          git commit -m "Sync changes from repo1"
+          git push repo2 main
