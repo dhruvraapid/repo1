@@ -21,7 +21,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          repository: repo2  # Replace <username>/<repo2> with the appropriate repository name
+          repository: dhruvraapid/repo2  # Replace <username>/<repo2> with the appropriate repository name
 
 
 
